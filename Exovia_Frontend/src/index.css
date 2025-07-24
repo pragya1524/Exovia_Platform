@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* #FAFAFA off-white */
+    --foreground: 22 28% 28%; /* #5D4037 rich brown text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 22 28% 28%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 22 28% 28%;
+
+    --primary: 22 28% 28%; /* #5D4037 brown */
+    --primary-foreground: 0 0% 100%; /* white text on primary */
+
+    --secondary: 30 30% 90%; /* warm light beige secondary */
+    --secondary-foreground: 22 28% 28%;
+
+    --muted: 30 30% 90%;
+    --muted-foreground: 22 10% 50%;
+
+    --accent: 14 100% 64%; /* #FF7043 coral */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 30% 90%;
+    --input: 30 30% 90%;
+    --ring: 14 100% 64%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 22 28% 28%;
+    --sidebar-primary: 22 28% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 14 100% 64%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 30 30% 90%;
+    --sidebar-ring: 14 100% 64%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Mobile-friendly improvements */
+@layer components {
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chart-container {
+    @apply w-full overflow-x-auto;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-white/20;
+  }
+
+  @media (max-width: 768px) {
+    .grid-responsive {
+      @apply grid-cols-1 gap-3;
+    }
+
+    .text-responsive {
+      @apply text-sm;
+    }
+
+    .card-mobile {
+      @apply p-3;
+    }
+
+    .chart-mobile {
+      @apply h-48;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .chart-3d-mobile {
+      @apply h-64;
+    }
+  }
+}
+
+/* Custom toggle styles */
+.toggle {
+  @apply relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors;
+}
+
+.toggle:checked {
+  @apply bg-accent;
+}
+
+.toggle::before {
+  content: '';
+  @apply absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition-transform;
+}
+
+.toggle:checked::before {
+  @apply translate-x-5;
+}
